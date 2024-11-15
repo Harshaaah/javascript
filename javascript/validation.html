@@ -1,0 +1,278 @@
+<html>
+<head>
+	<title>validation</title>
+	<script>
+	function checkEmptyFields()
+	{
+		const name=document.getElementById('name').value.trim();
+		const name2=document.getElementById('name2').value.trim();
+		const email=document.getElementById('email').value.trim();
+		const phone=document.getElementById('phone').value.trim();
+		return name===''||email===''||phone===''||name2==='';
+	}
+	function verifyEmail(email)
+	{
+		const atposition=email.IndexOf("@");
+		const dotposition=email.lastIndexOf(".");
+		if(atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length)
+		{
+			return false;
+		}
+		return true;
+	}
+	function verifyName(name)
+	{
+		if(name.length>30 || name.length<1)
+		{
+			return false;
+		}
+		for(let i=0;i<name.length;i++)
+		{
+			if(!isNaN(name[i]) && name[i]!=='')
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	function verifylastName(name2)
+	{
+		if(name2.length>30 || name2.length<1)
+		{
+			return false;
+		}
+		for(let i=0;i<name2.length;i++)
+		{
+			if(!isNaN(name2[i]) && name2[i]!=='')
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	function verifyPhone(phone)
+	{
+		if(phone.length!==10 || isNaN(phone))
+		{
+			return false;
+		}
+		return true;
+	}
+	function validateForm()
+	{
+		const email=document.getElementById('email').value.trim();
+		const name=document.getElementById('name').value.trim();
+		const name2=document.getElementById('name2').value.trim();
+		const phone=document.getElementById('phone').value.trim();
+		if(checkEmptyFields())
+		{
+			alert('Please fill in the all fields');
+		}
+		else if(!verifyEmail(email))
+		{
+			alert("please enter a valid email address.at position:"+email.indexOf("@")+"dot position:"+email.lastIndexOf("."));
+		}
+		else if(!verifyName(name))
+		{
+			alert('please enter  valid name.The first name should not be a number and must be less than 30 characters.');
+		}
+		else if(!verifyName(name2))
+		{
+			alert('please enter  valid name.The last name should not be a number and must be less than 30 characters.');	
+		}
+		else if(!verifyPhone(phone))
+		{
+			alert('please enterthe valid phone number.The number should be numeric and must be 10 digit long.');
+		}
+		else
+		{
+			alert('processing');
+		}
+	}
+	</script>
+</head>
+<body>
+	<h2>STUDENT REGISTRATION FORM</H2>
+	<FORM onSubmit="return validateForm()">
+	 <table border="2">
+		 <tr>
+			 <td>FIRST NAME</td>
+			 <td><input type="text" name="fname" id="name"></td>
+		 </tr>	
+		 <tr>
+			 <td>LAST NAME</td>
+			 <td><input type="text" name="lname" id="name2"></td>
+		 </tr>
+		 <tr>
+			 <td>DATE OF BIRTH</td>
+			 <td><select name="day">
+			 <option>1</option>
+			 <option>2</option>	
+			 <option>3</option>
+			 <option>4</option>
+			 <option>5</option>
+			 <option>6</option>
+			 <option>7</option>
+			 <option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+			 <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</			option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option>
+			 <option>29</option><option>30</option><option>31</option>
+ 			</select>
+			 <select name="month">
+			 <option>1</option>
+			 <option>2</option>
+			 <option>3</option>
+			 <option>4</option>
+			 <option>5</option>
+			 <option>6</option><option>7</option>
+			 <option>8</option>
+			 <option>9</option>
+			 <option>10</option>
+			 <option>11</option>
+			 <option>12</option>
+			 </select>
+			 <select name="year">
+			 <option>2000</option>
+			 <option>2001</option>
+			 <option>2002</option>
+			 <option>2003</option>
+			 <option>2004</option>
+			 <option>2005</option>
+			 <option>2006</option>
+			 <option>2007</option>
+			 <option>2008</option>
+			 <option>2009</option>
+			 </select>
+			 </td>	
+		 </tr>
+		 <tr>	
+			  <td>EMAIL ID</td>
+			  <td><input type="email" name="email" id="email"></td>
+		</tr>
+		<tr>	
+			  <td>MOBILE NO</td>
+			  <td><input type="text" id="phone"></td>
+		</tr>
+		<tr>
+			<td>GENDER</td>
+			<td><input type="radio" name="gender">MALE
+			<input type="radio" name="gender">FEMALE</td>
+		</tr>
+		 <tr>	
+			  <td>ADDRESS</td>
+			  <td><textarea name="address" rows="3"></textarea></td>
+		</tr>
+		 <tr>	
+			  <td>CITY</td>
+			  <td><input type="text" name="city"></td>
+		</tr>
+		 <tr>	
+			  <td>PINCODE</td>
+			  <td><input type="text" name="pincode"></td>
+		</tr>
+ 		 <tr>	
+			  <td>STATE</td>
+			  <td><input type="text" name="state" value="INDIA"></td>
+		</tr>
+		 <tr>	
+			  <td>HOBBIES</td>
+			  <td><label for="drawing">DRAWING</label>
+			  <input type="checkbox" id="drawing">
+			  <label for="drawing">SINGING</label>
+			  <input type="checkbox" id="singing">
+			  
+			  <label for="drawing">DANCING</label>
+			  <input type="checkbox" id="dancing">
+			  
+			  <label for="drawing">SKETCHING</label>
+			  <input type="checkbox" id="sketching">
+			  
+			  <label for="drawing">OTHERS</label>
+			  <input type="text" name="others"></td>
+		</tr>
+		<tr>	
+			  <td>QUALFICATION</td>
+			  <td><TABLE>
+			  	<tr>
+			  	 <th>SI.NO EXAMINATION</th>
+			  	 <th>BOARD</TH>
+			  	 <th>PERCENTAGE</th>
+			  	 <th>YEAR OF PASSING</TH>
+			  	</tr>
+			  	<tr>
+			  	 <td>1.   CLASS X</td>
+			  	 <td><input type="text"></td>
+			  	 <td><input type="text"></td>	
+			  	 <td><input type="text"></td>	
+			  	</tr>
+			  	 <tr>
+			  	 <td>2.   CLASS XII</td>
+			  	 <td><input type="text"></td>
+			  	 <td><input type="text"></td>	
+			  	 <td><input type="text"></td>	
+			  	</tr>
+			  	 <tr>
+			  	 <td>3.   GRADUTION</td>
+			  	 <td><input type="text"></td>
+			  	 <td><input type="text"></td>	
+			  	 <td><input type="text"></td>	
+			  	</tr>
+			  	 <tr>
+			  	 <td>4.   MASTERS</td>
+			  	 <td><input type="text"></td>
+			  	 <td><input type="text"></td>	
+			  	 <td><input type="text"></td>	
+			  	</tr>
+			  	<tr style="text-align:center;">
+			  	 <td></td>
+			  	 <td>(10 char max)</td>
+			  	 <td>(upto 2 decimal)</td>
+			  	</tr>
+			  	</table>
+			  </td>
+	        </tr>
+		<tr>
+		  	<td>COURSES APPLIED FOR</td>
+		  	<td><label for="mca">MCA</label>
+		  	    <input type="radio" id="mca" name="course">
+		  	    <label for="mca">MTECH</label> 
+		  	    <input type="radio" id="mca" name="course">       	
+			    <label for="mca">MSC</label> 
+		  	    <input type="radio" id="mca" name="course">       	
+			    <label for="mca">PH.D</label> 
+		  	    <input type="radio" id="mca" name="course">       	
+			</TD>
+		</tr>
+		<tr>
+		 	<td>TYPE YOUR PASSWORD</td>
+		 	<TD><INPUT TYPE="password" name="password"></td>
+		</tr>
+		<tr>
+		 	<td>UPLOAD YOOUR PHOTO</td>
+		 	<td><input type="file"></td>
+		</tr>
+		<tr>
+			<td>DATE OF TC</td>
+			<td><input type="date"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="center"><center>
+			   <input type="submit" value="submit" >
+			   <input type="reset" value="reset"></center>
+			</td>
+			
+		</tr>
+	</table>
+	</form>
+	
+
+</body>
+</html>
+	
+	
+	
+	
+	
+	
+	
+
+	

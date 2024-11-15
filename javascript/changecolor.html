@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>change background color</title>
+</head>
+	<style>
+		body{
+			font-family:sans-serif;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+		}
+		button{
+			padding:10px 20px;
+			font-size:16px;
+		}
+	</style>
+</head>
+<body>
+	<button id="changecolor">CHANGE BACKGROUND COLOUR</button>
+	<script language="javascript" text="text/javascript">
+		
+ 		const button=document.getElementById('changecolor');
+ 		button.addEventListener('click',changetoRed);
+ 		button.addEventListener('dblclick',changetoGreen);
+ 		function changetoRed()
+		{
+			document.body.style.backgroundColor='red'
+		}
+ 		function changetoGreen()
+ 		{
+ 			document.body.style.backgroundColor='green'
+ 		}
+ 		
+ 	</script>
+ </body>
+ </html>
